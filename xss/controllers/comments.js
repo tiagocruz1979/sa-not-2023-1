@@ -8,7 +8,7 @@ controller.create = async (req, res) => {
         await conn.query(`
             insert into comments(comment)
             values ($1)
-        `, [req.body.comment]) 
+        `, [req.sanitize(req.body.comment)]) 
         // redireciona de volta para o formuário
         res.redirect('/')
     }
