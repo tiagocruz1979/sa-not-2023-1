@@ -39,26 +39,35 @@ controller.create = async (req, res) => {
 
 controller.auth = async (req, res) =>  {
     try{
-        const result = conn.query(`
+        const result = await conn.query(`
             select * from users
-            where username = $1 and password = $2
+            where username = $1
         `,[
-            req.body.username,
-            req.body.password
+            req.body.username
         ])
 
         console.log({resultado: result.rows})
-        const user = result.row[0] //conferir
 
-        const passwordOK = await bcrypt.compare(req.body.password, user.password)
+        const user = result.rows[0] //conferir
+
+        const passwordOK = result.rowCount === 1 &&
+            await bcrypt.compare(req.body.password, user?.password)
 
         if( passwordOK) {
-            //1) Verificar se uma sessão foi criada
-            //2) Redirecionar para uma view com mensagem de sucesso
+            //Guardar Informações na sessão
+            req.session.isLoggedIn = true
+            req.session.username = user.username
+            
+            res.render('feedback',{
+                level: 'success',
+                message: 'Login efetuado com sucesso. Usuário Autenticado.'
+            })
+
         }
         else {
-            //1) Destruir sessão , se houver
-            //2) Redirecionar para uma view com mensagem de erro
+            res.render('user_login',{
+                message: 'Usuário ou senha inválidos.'
+            })
         }
     }
     catch(error) {
