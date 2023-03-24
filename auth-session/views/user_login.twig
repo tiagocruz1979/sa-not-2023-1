@@ -1,0 +1,28 @@
+{% extends 'layout.twig' %}
+{% block body %}
+    <h1>{{title}}</h1>
+
+    {% if message %}
+        <div style="border: 1px solid green; background-color: palegreen; padding: 20px">
+         {{message}}
+        </div>
+    {% endif %}
+
+    <form method="POST" action="/users/auth">
+    <label>
+        <span>Nome de Usuário></span>
+        <input name="username">
+    </label>
+    <br>
+        <span>Senha:</span>
+        <input type="password" id="password" name="password">
+    </label>
+    <br>
+
+    <div>
+        <input type="submit" value="Autenticar">
+    </div>
+    
+    </form>
+
+{% endblock %}
