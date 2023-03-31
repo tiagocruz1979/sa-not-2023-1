@@ -28,7 +28,7 @@ const sessionConfig = {
   cookie: {
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 dias
     //secure: true,   // retirado para fazer funcionar . O fausto explicou mas eu não entendi nada 
-    httpOnly: true
+    httpOnly: false
   }
 }
 

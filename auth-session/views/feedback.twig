@@ -45,4 +45,27 @@
     </h1>
     <span> {{message}} </span>
   </div>
+
+  <div>
+    <h2>Cookies da Página</h2>
+    <pre>{{cookie}}</pre>
+  </div>
+
+  <script>
+    const displayCookies = document.getElementById('display-cookies')
+    const docCookie = document.cookie
+    if(docCookie)  {
+      displayCookies.style.Visibility = 'visible'
+      const cookies = document.getElementById('cookies')
+      cookies.textContent = docCookie
+    }
+  </script>
+
+ 
+{% if redirectUrl %}
+  <script>
+    setTimeout( () => window.location.href = '{{redirectUrl}}', 3000)
+  </script>
+{% endif %}
+
 {% endblock %}

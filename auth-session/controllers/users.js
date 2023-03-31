@@ -60,7 +60,8 @@ controller.auth = async (req, res) =>  {
             
             res.render('feedback',{
                 level: 'success',
-                message: 'Login efetuado com sucesso. Usuário Autenticado.'
+                message: 'Login efetuado com sucesso. Usuário Autenticado.',
+                redirectUrl: req.session.redirectUrl
             })
 
         }
@@ -79,6 +80,11 @@ controller.formLogin = (req, res) => {
     res.render('user_login', {
         title: 'Fazer login'
     })
+}
+
+controller.logout = (req, res) => {
+    req.session.destroy()
+    res.redirect('/users/login')
 }
 
 
