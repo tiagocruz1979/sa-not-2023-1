@@ -6,7 +6,7 @@ function checkAuth(req,res,next) {
 
     // Guarda a url original e redireciona para a página de login
     else {
-        req.session.redirectUrl = req.redirectUrl
+        req.session.redirectUrl = req.url
         res.redirect('/users/login')
     }
 }

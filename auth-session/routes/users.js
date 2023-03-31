@@ -7,7 +7,7 @@ router.get('/form', checkAuth , controller.formNew)
 
 router.get('/login', controller.formLogin)
 
-router.post('/logout',checkAuth, controller.logout)
+router.get('/logout',checkAuth, controller.logout)
 
 router.post('/',checkAuth, controller.create)
 

@@ -46,7 +46,7 @@ controller.auth = async (req, res) =>  {
             req.body.username
         ])
 
-        console.log({resultado: result.rows})
+        //console.log({resultado: result.rows})
 
         const user = result.rows[0] //conferir
 
