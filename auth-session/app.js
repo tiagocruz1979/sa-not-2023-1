@@ -18,6 +18,7 @@ const pgSession = require('connect-pg-simple')(expressSession)
 var app = express();
 
 const helmet = require('helmet')
+app.use(helmet()) // faz parte das configurações padrao do helmet. Ativa as principais proteções
 app.use(helmet.hidePoweredBy())
 
 const sessionConfig = {
