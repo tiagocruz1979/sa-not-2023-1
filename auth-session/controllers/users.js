@@ -63,7 +63,6 @@ controller.auth = async (req, res) =>  {
                 message: 'Login efetuado com sucesso. Usuário Autenticado.',
                 redirectUrl: req.session.redirectUrl
             })
-git add
         }
         else {
             res.render('user_login',{
